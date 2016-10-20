@@ -14,7 +14,7 @@ var app = express();
 app.use(function (err, res, req, next) {
   var cli = appInsights.getClient();
   cli.trackException(err);
-  res.writeHeader(500, { 'Content-Type', 'text' });
+  res.writeHeader(500, { 'Content-Type': 'text' });
   res.send('Oops, there was an error');
   res.end();
 });
