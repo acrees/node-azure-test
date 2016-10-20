@@ -2,6 +2,9 @@ var express = require('express');
 var appInsights = require('applicationinsights');
 appInsights.setup().start();
 
+var c = appInsights.getClient();
+c.trackException(new Error('just testing'));
+
 process.on('uncaughtException', function (err) {
   var cli = appInsights.getClient();
   cli.trackException(err);
@@ -14,9 +17,8 @@ var app = express();
 app.use(function (err, res, req, next) {
   var cli = appInsights.getClient();
   cli.trackException(err);
-  res.writeHeader(500, { 'Content-Type': 'text' });
+  res.status(500);
   res.send('Oops, there was an error');
-  res.end();
 });
 
 app.get('/', function (req, res) {
