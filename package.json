@@ -8,6 +8,9 @@
   },
   "author": "Alexander C Rees",
   "license": "MIT",
+  "engines": {
+    "node": "6.6.0"
+  },
   "dependencies": {
     "applicationinsights": "^0.16.0",
     "express": "^4.14.0"
